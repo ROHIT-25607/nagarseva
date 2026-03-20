@@ -10,7 +10,7 @@ Built as a **Web Technology (WT) Project** for academic submission — Progress 
 ---
 
 ## 🌐 Live Demo
-[https://nagarseva.vercel.app](https://nagarseva.vercel.app)
+yet  to be done ... :-)
 
 ---
 
@@ -56,4 +56,4 @@ Built as a **Web Technology (WT) Project** for academic submission — Progress 
 
 ---
 
-*Web Technology Project | 2024-25*
+*Web Technology Project | 2025-26
