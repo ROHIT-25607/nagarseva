@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel — NagarSeva</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">Nagar<span>Seva</span> <span style="font-size:12px; background:var(--red); color:#fff; padding:2px 8px; border-radius:999px; font-family:'DM Sans',sans-serif; font-weight:600;">ADMIN</span></a>
+  <ul class="nav-links">
+    <li><a href="admin.html" class="active">Admin Panel</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="index.html" class="btn btn-outline btn-sm">← Back to Site</a>
+  </div>
+</nav>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Admin Menu</span>
+      <a href="admin.html" class="sidebar-link active"><span class="si">📋</span> All Issues</a>
+      <a href="#" class="sidebar-link"><span class="si">⏳</span> Pending Review</a>
+      <a href="#" class="sidebar-link"><span class="si">🚨</span> Urgent Issues</a>
+      <a href="#" class="sidebar-link"><span class="si">🚩</span> Flagged Reports</a>
+      <a href="#" class="sidebar-link"><span class="si">👥</span> Users</a>
+      <a href="#" class="sidebar-link"><span class="si">📊</span> Analytics</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Quick Stats</span>
+      <div style="padding:10px; background:var(--bg-alt); border-radius:var(--radius-sm); font-size:13px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Open</span><strong style="color:var(--red);">142</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">In Progress</span><strong style="color:var(--yellow);">38</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Fixed Today</span><strong style="color:var(--green);">12</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Flagged</span><strong style="color:var(--orange);">5</strong></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px;">
+      <div>
+        <h1 class="page-title">Admin Panel</h1>
+        <p class="page-sub" style="margin-bottom:0;">Manage and update civic issue reports</p>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-outline btn-sm">📊 Export Report</button>
+        <button class="btn btn-primary btn-sm">📧 Email Ward Office</button>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="g4" style="margin-bottom:28px;">
+      <div class="stat-card">
+        <div class="sc-label">Total Issues</div>
+        <div class="sc-value">4,812</div>
+        <div class="sc-change">+24 today</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Open Issues</div>
+        <div class="sc-value" style="color:var(--red);">142</div>
+        <div style="font-size:12px; color:var(--red); margin-top:5px;">Needs attention</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Fixed This Month</div>
+        <div class="sc-value" style="color:var(--green);">318</div>
+        <div class="sc-change">↑ 12% vs last month</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Avg. Resolution Time</div>
+        <div class="sc-value">4.2d</div>
+        <div class="sc-change">↓ Improving</div>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+      <div class="search-wrap" style="flex:1; min-width:200px;">
+        <span class="search-icon">🔍</span>
+        <input placeholder="Search issues..."/>
+      </div>
+      <select class="btn btn-outline" style="font-family:inherit; font-size:13px;">
+        <option>All Status</option>
+        <option>Reported</option>
+        <option>In Progress</option>
+        <option>Fixed</option>
+        <option>Rejected</option>
+      </select>
+      <select class="btn btn-outline" style="font-family:inherit; font-size:13px;">
+        <option>All Categories</option>
+        <option>Pothole</option>
+        <option>Streetlight</option>
+        <option>Garbage</option>
+        <option>Water</option>
+      </select>
+      <select class="btn btn-outline" style="font-family:inherit; font-size:13px;">
+        <option>Sort: Most Urgent</option>
+        <option>Sort: Most Votes</option>
+        <option>Sort: Newest</option>
+        <option>Sort: Oldest</option>
+      </select>
+    </div>
+
+    <!-- ISSUES TABLE -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Votes</th>
+            <th>Reported</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="max-width:220px;">
+              <a href="issue-detail.html" style="font-weight:600; font-size:14px; color:var(--text);">5 streetlights out on Rohini Sector 9</a>
+              <div style="font-size:12px; color:var(--red); margin-top:2px;">🚨 Urgent</div>
+            </td>
+            <td><span class="badge badge-orange">💡 Streetlight</span></td>
+            <td style="font-size:13px; color:var(--text-muted);">Rohini, Delhi</td>
+            <td style="font-weight:600; color:var(--orange);">61</td>
+            <td style="font-size:13px; color:var(--text-muted);">1d ago</td>
+            <td><span class="badge status-progress">🔧 In Progress</span></td>
+            <td>
+              <select style="font-size:12px; padding:5px 8px; border:1px solid var(--border); border-radius:var(--radius-xs); font-family:inherit;" onchange="updateStatus(this)">
+                <option>In Progress</option>
+                <option>Reported</option>
+                <option>Fixed</option>
+                <option>Rejected</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="max-width:220px;">
+              <a href="issue-detail.html" style="font-weight:600; font-size:14px; color:var(--text);">Large pothole near Laxmi Nagar Metro Gate 2</a>
+              <div style="font-size:12px; color:var(--red); margin-top:2px;">🚨 Urgent</div>
+            </td>
+            <td><span class="badge badge-orange">🕳️ Pothole</span></td>
+            <td style="font-size:13px; color:var(--text-muted);">Laxmi Nagar, Delhi</td>
+            <td style="font-weight:600; color:var(--orange);">34</td>
+            <td style="font-size:13px; color:var(--text-muted);">2h ago</td>
+            <td><span class="badge status-reported">📨 Reported</span></td>
+            <td>
+              <select style="font-size:12px; padding:5px 8px; border:1px solid var(--border); border-radius:var(--radius-xs); font-family:inherit;" onchange="updateStatus(this)">
+                <option>Reported</option>
+                <option>In Progress</option>
+                <option>Fixed</option>
+                <option>Rejected</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="max-width:220px;">
+              <a href="issue-detail.html" style="font-weight:600; font-size:14px; color:var(--text);">Drainage overflow flooding IP Extension road</a>
+            </td>
+            <td><span class="badge badge-orange">💧 Water</span></td>
+            <td style="font-size:13px; color:var(--text-muted);">IP Extension, Delhi</td>
+            <td style="font-weight:600; color:var(--orange);">47</td>
+            <td style="font-size:13px; color:var(--text-muted);">3h ago</td>
+            <td><span class="badge status-reported">📨 Reported</span></td>
+            <td>
+              <select style="font-size:12px; padding:5px 8px; border:1px solid var(--border); border-radius:var(--radius-xs); font-family:inherit;" onchange="updateStatus(this)">
+                <option>Reported</option>
+                <option>In Progress</option>
+                <option>Fixed</option>
+                <option>Rejected</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="max-width:220px;">
+              <a href="issue-detail.html" style="font-weight:600; font-size:14px; color:var(--text);">Overflowing garbage bin outside DDA flats Dwarka</a>
+            </td>
+            <td><span class="badge badge-orange">🗑️ Garbage</span></td>
+            <td style="font-size:13px; color:var(--text-muted);">Dwarka, Delhi</td>
+            <td style="font-weight:600; color:var(--orange);">28</td>
+            <td style="font-size:13px; color:var(--text-muted);">3d ago</td>
+            <td><span class="badge status-fixed">✅ Fixed</span></td>
+            <td>
+              <select style="font-size:12px; padding:5px 8px; border:1px solid var(--border); border-radius:var(--radius-xs); font-family:inherit;" onchange="updateStatus(this)">
+                <option>Fixed</option>
+                <option>Reported</option>
+                <option>In Progress</option>
+                <option>Rejected</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="max-width:220px;">
+              <a href="issue-detail.html" style="font-weight:600; font-size:14px; color:var(--text);">Footpath broken near Noida Sector 62 metro</a>
+            </td>
+            <td><span class="badge badge-orange">🚧 Road</span></td>
+            <td style="font-size:13px; color:var(--text-muted);">Noida Sec 62</td>
+            <td style="font-weight:600; color:var(--orange);">19</td>
+            <td style="font-size:13px; color:var(--text-muted);">5d ago</td>
+            <td><span class="badge status-progress">🔧 In Progress</span></td>
+            <td>
+              <select style="font-size:12px; padding:5px 8px; border:1px solid var(--border); border-radius:var(--radius-xs); font-family:inherit;" onchange="updateStatus(this)">
+                <option>In Progress</option>
+                <option>Reported</option>
+                <option>Fixed</option>
+                <option>Rejected</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+function updateStatus(select) {
+  const val = select.value;
+  const statusMap = {
+    'Reported':    ['status-reported', '📨 Reported'],
+    'In Progress': ['status-progress', '🔧 In Progress'],
+    'Fixed':       ['status-fixed',    '✅ Fixed'],
+    'Rejected':    ['status-rejected', '🚫 Rejected'],
+  };
+  const td = select.closest('tr').querySelector('td:nth-child(6)');
+  const [cls, label] = statusMap[val];
+  td.innerHTML = `<span class="badge ${cls}">${label}</span>`;
+  alert(`Status updated to "${val}". In live version this saves to database and notifies the reporter.`);
+}
+</script>
+</body>
+</html>

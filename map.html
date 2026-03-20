@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Issue Map — NagarSeva</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">Nagar<span>Seva</span></a>
+  <ul class="nav-links">
+    <li><a href="feed.html">Browse Issues</a></li>
+    <li><a href="map.html" class="active">Map</a></li>
+    <li><a href="leaderboard.html">Leaderboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="report.html" class="btn btn-primary">+ Report Issue</a>
+    <a href="profile.html" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-muted);">
+      <span class="avatar av-sm">R</span> Rohit
+    </a>
+  </div>
+</nav>
+
+<div style="display:flex; height:calc(100vh - 64px);">
+
+  <!-- SIDEBAR PANEL -->
+  <div style="width:320px; background:var(--bg); border-right:1px solid var(--border); display:flex; flex-direction:column; flex-shrink:0;">
+    <div style="padding:16px; border-bottom:1px solid var(--border);">
+      <h2 style="font-size:17px; font-weight:600; margin-bottom:10px;">Issue Map</h2>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input placeholder="Search area..."/>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div style="padding:12px 16px; border-bottom:1px solid var(--border);">
+      <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:8px;">FILTER BY CATEGORY</div>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="btn btn-ghost btn-xs" style="background:var(--orange-light); color:var(--orange);">All</button>
+        <button class="btn btn-outline btn-xs">🕳️ Pothole</button>
+        <button class="btn btn-outline btn-xs">💡 Light</button>
+        <button class="btn btn-outline btn-xs">🗑️ Garbage</button>
+        <button class="btn btn-outline btn-xs">💧 Water</button>
+      </div>
+    </div>
+
+    <!-- ISSUE LIST IN PANEL -->
+    <div style="flex:1; overflow-y:auto; padding:12px;">
+      <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:10px;">NEARBY ISSUES (12)</div>
+
+      <a href="issue-detail.html" style="display:block; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:8px; transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span class="badge badge-red" style="font-size:10px;">🚨 Urgent</span>
+          <span style="font-size:11px; color:var(--text-subtle);">1.2km away</span>
+        </div>
+        <div style="font-size:13px; font-weight:600; margin-bottom:2px;">Rohini Sec 9 — 5 lights out</div>
+        <div style="font-size:12px; color:var(--text-muted);">💡 Streetlight · ▲ 61 votes</div>
+      </a>
+
+      <a href="issue-detail.html" style="display:block; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:8px; transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span class="badge badge-red" style="font-size:10px;">🚨 Urgent</span>
+          <span style="font-size:11px; color:var(--text-subtle);">2.4km away</span>
+        </div>
+        <div style="font-size:13px; font-weight:600; margin-bottom:2px;">Laxmi Nagar Metro — pothole</div>
+        <div style="font-size:12px; color:var(--text-muted);">🕳️ Pothole · ▲ 34 votes</div>
+      </a>
+
+      <a href="issue-detail.html" style="display:block; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:8px; transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span class="badge badge-orange" style="font-size:10px;">Normal</span>
+          <span style="font-size:11px; color:var(--text-subtle);">0.8km away</span>
+        </div>
+        <div style="font-size:13px; font-weight:600; margin-bottom:2px;">IP Ext — drainage overflow</div>
+        <div style="font-size:12px; color:var(--text-muted);">💧 Water · ▲ 47 votes</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAP AREA -->
+  <div style="flex:1; position:relative;">
+    <div class="map-placeholder" style="height:100%; border-radius:0;">
+      <div style="font-size:52px; margin-bottom:16px;">🗺️</div>
+      <div style="font-size:18px; font-weight:600; color:var(--text);">Interactive Issue Map</div>
+      <div style="font-size:14px; color:var(--text-muted); max-width:340px; text-align:center; margin-top:8px;">
+        In the live version, Google Maps API shows all reported issues as coloured pins. Red = urgent, Yellow = in progress, Green = fixed.
+      </div>
+      <a href="report.html" class="btn btn-primary" style="margin-top:20px;">+ Report Issue at My Location</a>
+    </div>
+
+    <!-- MAP LEGEND -->
+    <div style="position:absolute; bottom:20px; right:20px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow);">
+      <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-muted);">MAP LEGEND</div>
+      <div style="display:flex; flex-direction:column; gap:6px; font-size:13px;">
+        <div style="display:flex; align-items:center; gap:8px;"><div style="width:12px;height:12px;background:var(--red);border-radius:50%;"></div> Urgent / Reported</div>
+        <div style="display:flex; align-items:center; gap:8px;"><div style="width:12px;height:12px;background:var(--yellow);border-radius:50%;"></div> In Progress</div>
+        <div style="display:flex; align-items:center; gap:8px;"><div style="width:12px;height:12px;background:var(--green);border-radius:50%;"></div> Fixed</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

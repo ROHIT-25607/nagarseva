@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Issues — NagarSeva</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">Nagar<span>Seva</span></a>
+  <ul class="nav-links">
+    <li><a href="feed.html" class="active">Browse Issues</a></li>
+    <li><a href="map.html">Map</a></li>
+    <li><a href="leaderboard.html">Leaderboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="report.html" class="btn btn-primary">+ Report Issue</a>
+    <a href="profile.html" style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text-muted);">
+      <span class="avatar av-sm">R</span> Rohit
+    </a>
+  </div>
+</nav>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Menu</span>
+      <a href="dashboard.html" class="sidebar-link"><span class="si">🏠</span> Dashboard</a>
+      <a href="feed.html"      class="sidebar-link active"><span class="si">📋</span> Browse Issues</a>
+      <a href="report.html"    class="sidebar-link"><span class="si">➕</span> Report Issue</a>
+      <a href="map.html"       class="sidebar-link"><span class="si">🗺️</span> Issue Map</a>
+      <a href="leaderboard.html" class="sidebar-link"><span class="si">🏆</span> Leaderboard</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Filter by Category</span>
+      <a href="#" class="sidebar-link active" onclick="filterCat('all',this)"><span class="si">📋</span> All Issues</a>
+      <a href="#" class="sidebar-link" onclick="filterCat('pothole',this)"><span class="si">🕳️</span> Potholes</a>
+      <a href="#" class="sidebar-link" onclick="filterCat('light',this)"><span class="si">💡</span> Streetlights</a>
+      <a href="#" class="sidebar-link" onclick="filterCat('garbage',this)"><span class="si">🗑️</span> Garbage</a>
+      <a href="#" class="sidebar-link" onclick="filterCat('water',this)"><span class="si">💧</span> Water</a>
+      <a href="#" class="sidebar-link" onclick="filterCat('road',this)"><span class="si">🚧</span> Road Damage</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Account</span>
+      <a href="profile.html" class="sidebar-link"><span class="si">👤</span> My Profile</a>
+      <a href="index.html"   class="sidebar-link"><span class="si">🚪</span> Log Out</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+      <div>
+        <h1 class="page-title">Browse Issues</h1>
+        <p class="page-sub" style="margin-bottom:0;">4,800+ issues reported across India</p>
+      </div>
+      <a href="map.html" class="btn btn-outline">🗺️ View on Map</a>
+    </div>
+
+    <!-- SEARCH + SORT -->
+    <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+      <div class="search-wrap" style="flex:1; min-width:200px;">
+        <span class="search-icon">🔍</span>
+        <input placeholder="Search by area, issue type..." oninput="searchIssues(this.value)"/>
+      </div>
+      <select class="btn btn-outline" style="font-family:inherit; font-size:14px;" onchange="sortIssues(this.value)">
+        <option value="votes">Sort: Most Upvoted</option>
+        <option value="recent">Sort: Most Recent</option>
+        <option value="urgent">Sort: Urgent First</option>
+      </select>
+      <select class="btn btn-outline" style="font-family:inherit; font-size:14px;">
+        <option>All Cities</option>
+        <option>Delhi</option>
+        <option>Mumbai</option>
+        <option>Bangalore</option>
+      </select>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(this,'all')">All Issues</button>
+      <button class="tab-btn" onclick="switchTab(this,'urgent')">🚨 Urgent</button>
+      <button class="tab-btn" onclick="switchTab(this,'open')">Open</button>
+      <button class="tab-btn" onclick="switchTab(this,'fixed')">✅ Fixed</button>
+    </div>
+
+    <!-- ISSUES LIST -->
+    <div id="issuesList">
+
+      <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;" data-cat="light">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="badge badge-red">🚨 Urgent</span>
+            <span class="badge badge-orange">💡 Streetlight</span>
+            <span style="font-size:12px; color:var(--text-subtle); display:flex; align-items:center;">📍 Rohini, Delhi</span>
+          </div>
+          <span class="badge status-progress">🔧 In Progress</span>
+        </div>
+        <div class="issue-title">5 streetlights out on Rohini Sector 9 main road — dangerous at night</div>
+        <div class="issue-body">Entire 500m stretch completely dark after 8pm. Women and children feel unsafe walking. Three near-miss accidents reported by residents this week.</div>
+        <div style="background:var(--bg-alt); border-radius:var(--radius-sm); height:80px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; font-size:13px; color:var(--text-subtle);">📷 Photo attached</div>
+        <div class="issue-meta">
+          <button class="upvote-btn">▲ 61 upvotes</button>
+          <span>💬 14 comments</span>
+          <span>👤 Anjali V.</span>
+          <span>1 day ago</span>
+        </div>
+      </a>
+
+      <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;" data-cat="pothole">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="badge badge-red">🚨 Urgent</span>
+            <span class="badge badge-orange">🕳️ Pothole</span>
+            <span style="font-size:12px; color:var(--text-subtle); display:flex; align-items:center;">📍 Laxmi Nagar, Delhi</span>
+          </div>
+          <span class="badge status-reported">📨 Reported</span>
+        </div>
+        <div class="issue-title">Large pothole near Laxmi Nagar Metro Gate 2 — caused accidents</div>
+        <div class="issue-body">Pothole approximately 2 feet wide and 6 inches deep. Two bike accidents this week. Located right at the metro exit where traffic is heavy.</div>
+        <div style="background:var(--bg-alt); border-radius:var(--radius-sm); height:80px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; font-size:13px; color:var(--text-subtle);">📷 Photo attached</div>
+        <div class="issue-meta">
+          <button class="upvote-btn">▲ 34 upvotes</button>
+          <span>💬 8 comments</span>
+          <span>👤 Rahul S.</span>
+          <span>2 hours ago</span>
+        </div>
+      </a>
+
+      <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;" data-cat="water">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="badge badge-orange">💧 Water</span>
+            <span style="font-size:12px; color:var(--text-subtle); display:flex; align-items:center;">📍 IP Extension, Delhi</span>
+          </div>
+          <span class="badge status-reported">📨 Reported</span>
+        </div>
+        <div class="issue-title">Drainage overflow flooding road outside IP Extension market</div>
+        <div class="issue-body">Drainage blocked for 2 weeks. Road floods even in light rain, affecting shops and pedestrians. Mosquito breeding ground forming.</div>
+        <div class="issue-meta" style="margin-top:8px;">
+          <button class="upvote-btn">▲ 47 upvotes</button>
+          <span>💬 6 comments</span>
+          <span>👤 Meena K.</span>
+          <span>3 hours ago</span>
+        </div>
+      </a>
+
+      <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;" data-cat="garbage">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="badge badge-orange">🗑️ Garbage</span>
+            <span style="font-size:12px; color:var(--text-subtle); display:flex; align-items:center;">📍 Dwarka Sec 10, Delhi</span>
+          </div>
+          <span class="badge status-fixed">✅ Fixed</span>
+        </div>
+        <div class="issue-title">Overflowing garbage bin outside DDA flats not cleared for 5 days</div>
+        <div class="issue-body">Bin overflowing and garbage spread on footpath. Strong smell and health hazard especially for elderly residents in the building.</div>
+        <div class="issue-meta" style="margin-top:8px;">
+          <button class="upvote-btn">▲ 28 upvotes</button>
+          <span>💬 5 comments</span>
+          <span>👤 Suresh P.</span>
+          <span>3 days ago</span>
+        </div>
+      </a>
+
+      <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;" data-cat="road">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span class="badge badge-orange">🚧 Road Damage</span>
+            <span style="font-size:12px; color:var(--text-subtle); display:flex; align-items:center;">📍 Noida Sec 62</span>
+          </div>
+          <span class="badge status-progress">🔧 In Progress</span>
+        </div>
+        <div class="issue-title">Footpath completely broken near Noida Sector 62 metro — unusable</div>
+        <div class="issue-body">Footpath tiles broken and uneven for 200m stretch. People walking on the road instead, causing traffic issues. Senior citizens especially affected.</div>
+        <div class="issue-meta" style="margin-top:8px;">
+          <button class="upvote-btn">▲ 19 upvotes</button>
+          <span>💬 3 comments</span>
+          <span>👤 Vikram T.</span>
+          <span>5 days ago</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+</div>
+
+<script>
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function filterCat(cat, link) {
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  link.classList.add('active');
+  document.querySelectorAll('#issuesList .issue-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+function searchIssues(q) {
+  const query = q.toLowerCase();
+  document.querySelectorAll('#issuesList .issue-card').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? 'block' : 'none';
+  });
+}
+function sortIssues(val) { }
+</script>
+</body>
+</html>

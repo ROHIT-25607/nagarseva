@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Issue — NagarSeva</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">Nagar<span>Seva</span></a>
+  <ul class="nav-links">
+    <li><a href="feed.html">Browse Issues</a></li>
+    <li><a href="map.html">Map</a></li>
+    <li><a href="leaderboard.html">Leaderboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="profile.html" style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text-muted);">
+      <span class="avatar av-sm">R</span> Rohit
+    </a>
+  </div>
+</nav>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Menu</span>
+      <a href="dashboard.html" class="sidebar-link"><span class="si">🏠</span> Dashboard</a>
+      <a href="feed.html"      class="sidebar-link"><span class="si">📋</span> Browse Issues</a>
+      <a href="report.html"    class="sidebar-link active"><span class="si">➕</span> Report Issue</a>
+      <a href="map.html"       class="sidebar-link"><span class="si">🗺️</span> Issue Map</a>
+      <a href="leaderboard.html" class="sidebar-link"><span class="si">🏆</span> Leaderboard</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Account</span>
+      <a href="profile.html" class="sidebar-link"><span class="si">👤</span> My Profile</a>
+      <a href="index.html"   class="sidebar-link"><span class="si">🚪</span> Log Out</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <h1 class="page-title">Report an Issue</h1>
+    <p class="page-sub">Fill in the details below. Photo is mandatory — it helps verify the issue.</p>
+
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; align-items:start;">
+
+      <!-- FORM -->
+      <div class="card">
+        <!-- PHOTO UPLOAD -->
+        <div class="form-group">
+          <label>📸 Photo of the Issue <span style="color:var(--red); font-size:12px;">Required</span></label>
+          <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+            <div id="uploadPrompt">
+              <div style="font-size:36px; margin-bottom:10px;">📷</div>
+              <div style="font-weight:600; margin-bottom:4px;">Click to upload or drag & drop</div>
+              <div style="font-size:13px; color:var(--text-subtle);">JPG, PNG up to 10MB · Photo must clearly show the issue</div>
+            </div>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="previewImage(this)"/>
+        </div>
+
+        <!-- CATEGORY -->
+        <div class="form-group">
+          <label>Category</label>
+          <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px;">
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="pothole" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">🕳️</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Pothole</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="light" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">💡</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Streetlight</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="garbage" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">🗑️</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Garbage</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="water" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">💧</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Water</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="tree" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">🌳</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Fallen Tree</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="road" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">🚧</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Road Damage</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="nowater" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">🚰</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">No Water</div>
+              </div>
+            </label>
+            <label class="cat-option" style="cursor:pointer;">
+              <input type="radio" name="category" value="other" style="display:none;" onchange="selectCat(this)"/>
+              <div class="cat-btn" style="text-align:center; padding:12px 8px; border:1.5px solid var(--border); border-radius:var(--radius-sm); transition:all 0.15s;">
+                <div style="font-size:22px;">📢</div>
+                <div style="font-size:12px; margin-top:4px; font-weight:500;">Other</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Title <span style="color:var(--text-subtle); font-weight:400; font-size:12px;">Be specific about location and issue</span></label>
+          <input type="text" placeholder="e.g. Large pothole near Laxmi Nagar Metro Gate 2"/>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea placeholder="Describe the issue — how severe it is, how long it's been there, any safety risks..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Area / Locality</label>
+            <input type="text" placeholder="e.g. Laxmi Nagar, Delhi"/>
+          </div>
+          <div class="form-group">
+            <label>Urgency</label>
+            <select>
+              <option>Normal</option>
+              <option>🚨 Urgent — Safety Risk</option>
+              <option>Low Priority</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>📍 Location <span style="color:var(--text-subtle); font-weight:400; font-size:12px;">Click on map to pin location</span></label>
+          <div class="map-placeholder" style="height:200px;">
+            <div style="font-size:32px;">📍</div>
+            <div>Click to set location on map</div>
+            <div style="font-size:12px; color:var(--text-subtle);">(Google Maps integration in live version)</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:8px;">
+          <a href="feed.html" class="btn btn-outline">Cancel</a>
+          <a href="issue-detail.html" class="btn btn-primary btn-lg">Submit Report →</a>
+        </div>
+      </div>
+
+      <!-- TIPS -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card" style="background:var(--orange-light); border-color:var(--orange-mid);">
+          <h3 style="font-size:15px; margin-bottom:14px; color:#9A3412;">💡 Tips for a strong report</h3>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#7C2D12;">
+            <div>✅ Clear photo showing the issue</div>
+            <div>✅ Mention exact location landmark</div>
+            <div>✅ Describe safety impact if any</div>
+            <div>✅ Be honest — false reports hurt your score</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:15px; margin-bottom:12px;">🏆 What you earn</h3>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--text-muted);">
+            <div style="display:flex; justify-content:space-between;"><span>Submit a report</span><strong style="color:var(--orange);">+10 pts</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>Report gets 10 upvotes</span><strong style="color:var(--orange);">+20 pts</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>Issue gets fixed</span><strong style="color:var(--green);">+50 pts</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>False report flagged</span><strong style="color:var(--red);">−30 pts</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+function selectCat(input) {
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.style.borderColor = 'var(--border)';
+    b.style.background = '';
+  });
+  const btn = input.parentElement.querySelector('.cat-btn');
+  btn.style.borderColor = 'var(--orange)';
+  btn.style.background = 'var(--orange-light)';
+}
+function previewImage(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('uploadPrompt').innerHTML =
+        `<img src="${e.target.result}" style="max-height:160px; border-radius:var(--radius-sm); object-fit:cover;"/>
+         <div style="margin-top:8px; font-size:13px; color:var(--green);">✅ Photo uploaded</div>`;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+</body>
+</html>

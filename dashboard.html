@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — NagarSeva</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">Nagar<span>Seva</span></a>
+  <ul class="nav-links">
+    <li><a href="feed.html">Browse Issues</a></li>
+    <li><a href="map.html">Map</a></li>
+    <li><a href="leaderboard.html">Leaderboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="report.html" class="btn btn-primary">+ Report Issue</a>
+    <a href="profile.html" style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text-muted);">
+      <span class="avatar av-sm">R</span> Rohit
+    </a>
+  </div>
+</nav>
+
+<div class="app-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Menu</span>
+      <a href="dashboard.html" class="sidebar-link active"><span class="si">🏠</span> Dashboard</a>
+      <a href="feed.html"      class="sidebar-link"><span class="si">📋</span> Browse Issues</a>
+      <a href="report.html"    class="sidebar-link"><span class="si">➕</span> Report Issue</a>
+      <a href="map.html"       class="sidebar-link"><span class="si">🗺️</span> Issue Map</a>
+      <a href="leaderboard.html" class="sidebar-link"><span class="si">🏆</span> Leaderboard</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Account</span>
+      <a href="profile.html"   class="sidebar-link"><span class="si">👤</span> My Profile</a>
+      <a href="index.html"     class="sidebar-link"><span class="si">🚪</span> Log Out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:28px;">
+      <div>
+        <h1 class="page-title">Good morning, Rohit 👋</h1>
+        <p class="page-sub" style="margin-bottom:0;">Here's what's happening in your area today.</p>
+      </div>
+      <a href="report.html" class="btn btn-primary">+ Report New Issue</a>
+    </div>
+
+    <!-- STATS -->
+    <div class="g4" style="margin-bottom:28px;">
+      <div class="stat-card">
+        <div class="sc-label">My Reports</div>
+        <div class="sc-value" style="color:var(--orange);">7</div>
+        <div class="sc-change">+2 this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Issues Fixed</div>
+        <div class="sc-value" style="color:var(--green);">3</div>
+        <div class="sc-change">Out of my 7 reports</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Reputation Points</div>
+        <div class="sc-value" style="color:var(--orange);">420</div>
+        <div class="sc-change">+35 this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">Upvotes Given</div>
+        <div class="sc-value">28</div>
+        <div class="sc-change">You're engaged!</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <!-- MY RECENT REPORTS -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <h3 style="font-size:16px; font-weight:600;">My Recent Reports</h3>
+          <a href="profile.html" style="font-size:13px; color:var(--orange);">View all</a>
+        </div>
+
+        <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span class="badge badge-orange">🕳️ Pothole</span>
+            <span class="badge status-progress">🔧 In Progress</span>
+          </div>
+          <div class="issue-title">Pothole on Vikas Marg near petrol pump</div>
+          <div class="issue-meta">▲ 22 upvotes &nbsp;·&nbsp; 3d ago</div>
+        </a>
+
+        <a href="issue-detail.html" class="issue-card" style="display:block; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span class="badge badge-orange">🗑️ Garbage</span>
+            <span class="badge status-fixed">✅ Fixed</span>
+          </div>
+          <div class="issue-title">Overflowing bin near Preet Vihar market</div>
+          <div class="issue-meta">▲ 18 upvotes &nbsp;·&nbsp; 1w ago</div>
+        </a>
+
+        <a href="issue-detail.html" class="issue-card" style="display:block;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span class="badge badge-orange">💡 Streetlight</span>
+            <span class="badge status-reported">📨 Reported</span>
+          </div>
+          <div class="issue-title">Broken streetlight outside Mother Dairy, IP Ext</div>
+          <div class="issue-meta">▲ 9 upvotes &nbsp;·&nbsp; 2d ago</div>
+        </a>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+
+        <!-- NEARBY ISSUES -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Trending Near You</h3>
+            <a href="feed.html" style="font-size:13px; color:var(--orange);">See all</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; background:var(--bg-alt); border-radius:var(--radius-sm);">
+              <div>
+                <div style="font-size:14px; font-weight:500;">Rohini Sec 9 — 5 streetlights out</div>
+                <div style="font-size:12px; color:var(--text-muted);">💡 Streetlight · 1.2 km away</div>
+              </div>
+              <span style="font-size:13px; font-weight:600; color:var(--orange);">▲ 61</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; background:var(--bg-alt); border-radius:var(--radius-sm);">
+              <div>
+                <div style="font-size:14px; font-weight:500;">Laxmi Nagar — large pothole Gate 2</div>
+                <div style="font-size:12px; color:var(--text-muted);">🕳️ Pothole · 2.4 km away</div>
+              </div>
+              <span style="font-size:13px; font-weight:600; color:var(--orange);">▲ 34</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; background:var(--bg-alt); border-radius:var(--radius-sm);">
+              <div>
+                <div style="font-size:14px; font-weight:500;">IP Ext — drainage overflow on road</div>
+                <div style="font-size:12px; color:var(--text-muted);">💧 Water · 0.8 km away</div>
+              </div>
+              <span style="font-size:13px; font-weight:600; color:var(--orange);">▲ 47</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOP CONTRIBUTORS -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Top Contributors</h3>
+            <a href="leaderboard.html" style="font-size:13px; color:var(--orange);">Full board</a>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank gold">1</div>
+            <span class="avatar av-sm" style="background:#F59E0B;">A</span>
+            <div class="lb-name">Anjali Verma</div>
+            <div class="lb-pts">1,840 pts</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank silver">2</div>
+            <span class="avatar av-sm" style="background:#6366F1;">S</span>
+            <div class="lb-name">Suresh Pal</div>
+            <div class="lb-pts">1,290 pts</div>
+          </div>
+          <div class="lb-row" style="background:var(--orange-light); border-radius:var(--radius-sm);">
+            <div class="lb-rank bronze">3</div>
+            <span class="avatar av-sm">R</span>
+            <div class="lb-name">Rohit Sharma <span style="font-size:11px; color:var(--orange);">(You)</span></div>
+            <div class="lb-pts">420 pts</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
